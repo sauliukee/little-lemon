@@ -6,12 +6,12 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-row">
         <a className="brand" href="/" aria-label="Little Lemon – home">
-          <img src={logo} alt="Little Lemon logo" width="120" height="36" />
+          {/* Remove width/height attributes; size via CSS .brand img { height:32px } */}
+          <img src={logo} alt="Little Lemon logo" />
         </a>
-
         <nav aria-label="Primary" className="primary-nav">
           <ul>
-            <li><a href="/home">Home</a></li>
+            <li><a href="/home" aria-current="page">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/menu">Menu</a></li>
             <li><a href="/reservations">Reservations</a></li>

@@ -1,64 +1,580 @@
-
+/* ================== Little Lemon – index.css (FULL) ================== */
+/* ----------- Base / reset ----------- */
 * { box-sizing: border-box; }
-:root { --max: 1100px; }
-body { margin: 0; font-family: system-ui, Arial, sans-serif; line-height: 1.5; color: #222; }
-.container { max-width: var(--max); margin: 0 auto; padding: 1rem; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Karla", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+}
+img { max-width: 100%; height: auto; display: block; }
 
+/* ----------- Theme tokens ----------- */
+:root{
+  /* Palette (course-like) */
+  --clr-primary: #495E57;   /* dark green for hero */
+  --clr-accent:  #F4CE14;   /* lemon yellow CTAs */
+  --clr-text:    #333333;
+  --clr-muted:   #5f6b6b;
+  --clr-bg:      #FFFFFF;
+  --clr-bg-soft: #F7F7F7;
+  --clr-card:    #FFFFFF;
+  --clr-border:  #DFE1E6;
+
+  /* Sizing */
+  --max: 1100px;
+  --radius: 14px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 6px 12px rgba(0,0,0,.10);
+
+  /* Typography scale */
+  --fs-900: clamp(2.4rem, 4vw, 3rem);      /* h1 */
+  --fs-800: clamp(1.8rem, 2.8vw, 2.25rem); /* h2 */
+  --fs-700: clamp(1.4rem, 2vw, 1.75rem);   /* h3 */
+  --fs-600: 1.25rem;  /* h4 */
+  --fs-500: 1.125rem; /* h5 */
+  --fs-400: 1rem;     /* body */
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+}
+
+/* ----------- Layout helpers ----------- */
+.container { max-width: var(--max); margin-inline: auto; padding: 1rem; }
 .skip-link { position: absolute; left: -9999px; top: -9999px; }
-.skip-link:focus { left: 1rem; top: 1rem; background: #fff; padding: .5rem .75rem; border: 1px solid #000; }
+.skip-link:focus { left: 1rem; top: 1rem; background:#fff; border:1px solid #000; padding:.5rem .75rem; }
 
-/* header */
-.site-header { border-bottom: 1px solid #eee; }
-.header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.primary-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
-.primary-nav a { text-decoration: none; }
+/* ================== TYPOGRAPHY ================== */
+h1,h2,h3,h4,h5,h6{
+  margin: 0 0 .5em;
+  line-height: var(--lh-tight);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--clr-primary);
+}
+h1{ font-size: var(--fs-900); font-family: "Markazi Text", serif; letter-spacing:-.02em; }
+h2{ font-size: var(--fs-800); font-family: "Markazi Text", serif; }
+h3{ font-size: var(--fs-700); }
+h4{ font-size: var(--fs-600); }
+h5{ font-size: var(--fs-500); }
+h6{ font-size: .95rem; font-weight: 700; color: var(--clr-muted); }
+p{ margin: 0 0 1rem; color: var(--clr-text); }
+p.lead{ max-width: 46ch; font-size: 1.05rem; color: var(--clr-muted); }
+span.highlight{ background: var(--clr-accent); color:#111; padding:.1em .3em; border-radius:.25em; }
 
-/* hero */
-.hero { background: #efefef; }
-.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; }
-.hero-copy .location { font-weight: 600; margin-top: -.5rem; }
-.lead { max-width: 46ch; }
-.btn, .btn-outline { display: inline-block; padding: .6rem 1rem; border-radius: .5rem; text-decoration: none; }
-.btn { background: #333; color: #fff; }
-.btn-outline { border: 1px solid #333; color: #333; margin-left: .5rem; }
+/* Requested: h2 and description text color */
+h2 { color: #EDEFEE; }
+.card-text, .review-text, p.lead { color: #EDEFEE; }
 
-/* placeholder image boxes */
-.ph-img { background: #cfcfcf; border: 2px dashed #aaa; width: 100%; aspect-ratio: 16/10; }
-.ph-img.tall { aspect-ratio: 3/4; }
-.ph-img.overlap { aspect-ratio: 3/4; margin-top: -40%; margin-left: 20%; }
+/* ================== HEADER & NAV ================== */
+/* ===== HEADER & NAV ===== */
+.site-header{
+  background:#fff;
+  border-bottom:1px solid #eee;
+  position:sticky; top:0; z-index:10;
+}
 
-/* highlights */
-.section-head { display: flex; align-items: center; justify-content: space-between; }
-.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.card { background: #f8f8f8; border: 1px solid #eee; border-radius: .5rem; overflow: hidden; }
-.card-body { padding: .75rem 1rem 1rem; }
-.card-title-row { display: flex; align-items: baseline; justify-content: space-between; }
-.card-title { margin: 0; }
-.price { color: #e74c3c; }
+.header-row{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  min-height:68px;
+}
 
-/* testimonials */
-.testimonials { background: #efefef; }
-.review-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.review { background: #fff; border: 1px solid #eee; padding: 1rem; border-radius: .5rem; }
-.stars { letter-spacing: .15em; }
-.reviewer { display: flex; align-items: center; gap: .75rem; }
-.avatar { width: 40px; aspect-ratio: 1; border-radius: 50%; }
+/* logo sizing done via CSS (keeps SVG crisp) */
+.brand img{
+  height:32px;          /* control height only */
+  width:auto;
+  display:block;
+}
 
-/* about */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+/* NAV */
+.primary-nav ul{
+  list-style:none; margin:0; padding:0;
+  display:flex; gap:clamp(.5rem,2vw,1rem); flex-wrap:wrap;
+}
 
-/* footer */
-.site-footer { background: #f3f3f3; margin-top: 2rem; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.footer-grid ul { list-style: none; padding: 0; margin: 0; }
-.legal { text-align: center; padding: .75rem; border-top: 1px solid #e5e5e5; font-size: .9rem; }
+.primary-nav a{
+  position:relative;
+  display:inline-block;
+  padding:.4rem .7rem;
+  font-size:.98rem;
+  font-weight:600;
+  color: var(--clr-primary);                 /* GREEN */
+  text-decoration:none;
+  border-radius:.6rem;
+  transition: color .18s ease, background .18s ease;
+}
 
-/* responsive */
+/* soft lemon hover */
+.primary-nav a:hover,
+.primary-nav a:focus-visible{
+  background: rgba(244,206,20,.14);          /* #F4CE14 @ 14% */
+  outline:none;
+}
+
+/* animated lemon underline for active/hover */
+.primary-nav a::after{
+  content:"";
+  position:absolute; left:.7rem; right:.7rem; bottom:.3rem;
+  height:2px; background: var(--clr-accent);
+  transform:scaleX(0); transform-origin:left;
+  transition: transform .2s ease;
+}
+.primary-nav a:hover::after,
+.primary-nav a:focus-visible::after,
+.primary-nav a[aria-current="page"]::after,
+.primary-nav a.active::after{
+  transform:scaleX(1);
+}
+
+
+/* ================== HERO ================== */
+.hero { 
+  background: #495E57;
+  position: relative;
+  overflow: visible; /* leidžia nuotraukai išlįsti už ribų */
+}
+
+.hero--band {
+  background: var(--clr-primary);
+  color: #fff;
+  padding-block: 0.7rem 0.7rem; /* viršus mažesnis, apačia palikta vietai išlindimui */
+}
+
+.hero--band h1 { 
+  color: var(--clr-accent);
+  margin-bottom: 0.25rem;
+}
+
+/* Ensure hero h1 uses the exact requested color */
+.hero h1 {
+  color: #F4CE14; /* Little Lemon heading color as requested */
+}
+
+.hero--band .location {
+  color: #E7ECEA;
+  margin-top: -0.4rem;
+}
+
+.hero--band p.location {
+  color: #E7ECEA !important;
+}
+
+
+.hero--band .lead { 
+  color: #E7ECEA; 
+  margin-bottom: 0.75rem;
+}
+
+.hero--band .btn { 
+  background: var(--clr-accent);
+  color: #111;
+  border: 0;
+}
+
+.hero--band .btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr; /* daugiau vietos tekstui, mažiau nuotraukai */
+  gap: 2rem;
+  align-items: center;
+}
+
+/* HERO IMAGE — interaktyvi ir išlindusi */
+.hero-media {
+  position: relative;
+  display: grid;
+  place-items: end; /* nuotrauka bus „prilipusi“ apačioje hero zonos */
+}
+
+.hero-media img {
+  width: min(420px, 90%);
+  aspect-ratio: 4 / 5;      /* graži vertikali proporcija */
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  transform: translateY(10%); /* išlenda žemyn */
+  transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+  will-change: transform;
+}
+
+/* Interaktyvus hover efektas */
+.hero-media img:hover {
+  transform: translateY(22%) scale(1.03) rotate(-1deg);
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  filter: saturate(1.05);
+}
+
+/* Klaviatūros focus (prieinamumas) */
+.hero-media img:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+  transform: translateY(22%) scale(1.03);
+}
+
+
+
+/* Responsyvūs pataisymai */
 @media (max-width: 900px) {
-  .hero-grid, .about-grid { grid-template-columns: 1fr; }
-  .card-grid { grid-template-columns: 1fr 1fr; }
-  .review-grid { grid-template-columns: 1fr 1fr; }
+  .hero--band { padding-block: 1.5rem 5rem; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-media img {
+    width: min(340px, 85%);
+    transform: translateY(22%);
+  }
 }
+
 @media (max-width: 600px) {
-  .card-grid, .review-grid { grid-template-columns: 1fr; }
+  .hero--band { padding-block: 1.25rem 4rem; }
+  .hero-media img {
+    width: min(280px, 88%);
+    transform: translateY(16%);
+  }
 }
+
+
+/* Buttons */
+/* ===== Buttons (unified) ===== */
+.btn, .btn-outline{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5rem;
+  padding:.7rem 1.1rem;
+  font-weight:700;
+  border-radius:12px;
+  text-decoration:none;
+  line-height:1;
+  transition: filter .2s ease, box-shadow .2s ease, transform .12s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Primary – geltonas */
+.btn{
+  background: var(--clr-accent);
+  color:#111;
+  border:2px solid var(--clr-accent);
+}
+.btn:hover{
+  filter: brightness(.94);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn:active{
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline – žalias kontūras (jei kur nors naudoji) */
+.btn-outline{
+  background: transparent;
+  color: var(--clr-primary);
+  border:2px solid var(--clr-primary);
+}
+.btn-outline:hover{
+  background: rgba(73,94,87,.08);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline ant tamsaus hero fono – baltas kontūras */
+.hero--band .btn-outline{
+  color:#fff; border-color:#fff;
+}
+.hero--band .btn-outline:hover{
+  background: rgba(255,255,255,.15);
+}
+
+/* Placeholder wireframe boxes */
+.ph-img { background:#cfcfcf; border:2px dashed #aaa; width:100%; aspect-ratio: 16/10; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.ph-img.tall { aspect-ratio: 3/4; }
+.ph-img.overlap { aspect-ratio:3/4; margin-top:-40%; margin-left:20%; }
+
+/* ================== SPECIALS / HIGHLIGHTS ================== */
+.section-head{ display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-block: 1.5rem; }
+.section-head h2{ color: var(--clr-text); }
+.card-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(.75rem, 2vw, 1rem);
+}
+.card{
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.card .ph-img, .card img{ border-bottom-left-radius:0; border-bottom-right-radius:0; }
+.card-body{ padding: .75rem 1rem 1rem; display:flex; flex-direction:column; gap:.5rem; }
+.card-title-row{ display:flex; align-items:baseline; justify-content:space-between; gap:.75rem; margin-bottom:.25rem; }
+.card-title{ margin:0; font-weight:700; }
+.price{ color:#E5532D; font-weight:700; font-size:.9rem; }
+.card-text{ color:#475254; font-size:.95rem; }
+.card-link{ color: var(--clr-primary); font-weight: 600; text-decoration: none; }
+.card-link:hover{ text-decoration: underline; }
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Optional dotted placeholder for middle card */
+.card--grid .ph-img{
+  background:
+    radial-gradient(#ddd 1px, transparent 1px) 0 0/10px 10px,
+    #fafafa;
+}
+
+/* ================== TESTIMONIALS ================== */
+.testimonials{
+  background: #495E57;       /* tamsus fonas */
+  color: #EDEFEE;            /* šviesus tekstas */
+  padding-block: 3rem;       /* vertikalūs tarpai */
+}
+
+.testimonials h2 {
+  color: #F4CE14;             /* geltona – kaip brand akcentas */
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-family: "Markazi Text", serif;
+}
+.review-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(.75rem, 2vw, 1rem);
+}
+
+.review{
+  background:#FFFFFF;        /* baltos kortelės ant tamsaus fono */
+  color:#333;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem;
+  display:flex; flex-direction:column; gap:.5rem;
+}
+
+.review-text {
+  color: #111;             /* ryškus tamsus tekstas */
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+
+.stars {
+  letter-spacing: .1em;   /* mažas tarpelis tarp žvaigždučių */
+  color: #F4CE14;         /* geltonos žvaigždės */
+  font-size: 1.2rem;      /* šiek tiek didesnės, ryškesnės */
+}
+
+.reviewer{ display:flex; align-items:center; gap:.75rem; }
+
+.avatar{
+  width:50px; height:50px;   /* vietoj aspect-ratio → konkretūs matmenys */
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #F4CE14;  /* geltonas akcentas */
+  background:#ddd;
+}
+
+/* Telefonams – 1–2 stulpai */
+@media (max-width: 900px){ .review-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px){ .review-grid{ grid-template-columns: 1fr; } }
+
+
+/* ================== ABOUT ================== */
+/* ================== ABOUT ================== */
+.about {
+  background: #ffffff;              /* baltas fonas */
+  color: #495E57;                  /* žalias tekstas */
+  padding-block: 4rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about h2 {
+  color: #F4CE14;                  /* geltonas „Little Lemon“ */
+  font-size: 2.2rem;
+  font-family: "Markazi Text", serif;
+  margin-bottom: 0.3rem;
+}
+
+.about-sub {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #495E57;
+  margin-bottom: 1.2rem;
+}
+
+.about-lead {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #495E57;
+}
+
+.about p {
+  color: #495E57;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.about-list {
+  margin: 1rem 0 1.5rem 1.2rem;
+  padding: 0;
+}
+.about-list li {
+  margin: 0.4rem 0;
+  color: #495E57;
+  font-weight: 500;
+}
+
+.about-media {
+  position: relative;
+  display: grid;
+  place-items: end;
+}
+
+.about-img.primary {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Kortelė ant viršaus */
+.about-card {
+  position: absolute;
+  bottom: -14%;
+  left: 8%;
+  background: #ffffff;
+  color: #495E57;
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-size: 0.95rem;
+}
+
+.about-card strong {
+  display: block;
+  font-weight: 700;
+  color: #F4CE14;
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-img.primary {
+    height: 320px;
+  }
+  .about-card {
+    position: static;
+    margin-top: 1rem;
+  }
+}
+
+
+/* ================== FOOTER ================== */
+/* ================== FOOTER ================== */
+.site-footer {
+  background: #495E57;           /* tamsiai žalias fonas */
+  color: #EDEFEE;                /* šviesus tekstas */
+  padding-block: 2rem;
+  margin-top: 2rem;
+  border-top: none;              /* panaikinam pilką liniją */
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.footer-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-grid li {
+  margin: 0.4rem 0;
+}
+
+.site-footer h3 {
+  color: #F4CE14;                /* geltoni heading’ai (brand spalva) */
+  font-family: "Markazi Text", serif;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: #EDEFEE;                /* šviesiai balti linkai */
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.site-footer a:hover {
+  color: #F4CE14;                /* hover — geltonas akcentas */
+  text-decoration: underline;
+}
+
+/* apatinė eilutė (copyright) */
+.legal {
+  text-align: center;
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.9rem;
+  color: #EDEFEE;
+}
+
+/* Responsyvus dizainas */
+@media (max-width: 800px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* ================== IMAGES (global) ================== */
+img{ border-radius: var(--radius); }
+
+/* ================== Utilities ================== */
+.muted{ color: var(--clr-muted); }
+.center{ text-align:center; }
+.round{ border-radius: var(--radius); }
+.shadow-sm{ box-shadow: var(--shadow-sm); }
+.shadow-md{ box-shadow: var(--shadow-md); }
+
+/* ================== Responsive ================== */
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .about-grid{ grid-template-columns: 1fr; }
+  .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  .review-grid{ grid-template-columns: repeat(2, 1fr); }
+  .primary-nav a{ padding:.4rem .6rem; }
+  h1{ font-size: clamp(2rem, 6vw, 2.4rem); }
+}
+@media (max-width: 600px){
+  .card-grid, .review-grid, .footer-grid{ grid-template-columns: 1fr; }
+  .section-head{ flex-direction: column; align-items: flex-start; }
+  p.lead{ font-size: 1rem; }
+}
+/* ================== END ================== */

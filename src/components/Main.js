@@ -1,3 +1,70 @@
+import greekSalad from "../assets/greek-salad.jpg";
+import bruschetta from "../assets/bruschetta.jpg";
+import lemonDessert from "../assets/lemon-dessert.jpg";
+console.log(greekSalad, bruschetta, lemonDessert);
+
+
+export default function Highlights() {
+    console.log(greekSalad, bruschetta, lemonDessert);
+  return (
+    <section className="highlights" aria-labelledby="specials-heading">
+      <div className="container">
+        <div className="section-head">
+          <h2 id="specials-heading">This week’s specials!</h2>
+          <a className="btn-outline" href="/menu">Online Menu</a>
+        </div>
+
+        <div className="card-grid">
+          {/* Greek Salad */}
+          <article className="card">
+            <img src={greekSalad} alt="Greek Salad" />
+            <div className="card-body">
+              <div className="card-title-row">
+                <h3 className="card-title">Greek Salad</h3>
+                <strong className="price">$12.99</strong>
+              </div>
+              <p className="card-text">
+                The famous Greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese.
+              </p>
+              <a className="card-link" href="/order">Order a delivery →</a>
+            </div>
+          </article>
+
+          {/* Bruschetta */}
+          <article className="card">
+            <img src={bruschetta} alt="Bruschetta" />
+            <div className="card-body">
+              <div className="card-title-row">
+                <h3 className="card-title">Bruschetta</h3>
+                <strong className="price">$5.99</strong>
+              </div>
+              <p className="card-text">
+                Grilled bread garlic, seasoned with salt and olive oil topped with tomatoes.
+              </p>
+              <a className="card-link" href="/order">Order a delivery →</a>
+            </div>
+          </article>
+
+          {/* Lemon Dessert */}
+          <article className="card">
+            <img src={lemonDessert} alt="Lemon Dessert" />
+            <div className="card-body">
+              <div className="card-title-row">
+                <h3 className="card-title">Lemon Dessert</h3>
+                <strong className="price">$5.00</strong>
+              </div>
+              <p className="card-text">
+                This comes straight from grandma’s recipe book — every last ingredient has been sourced carefully.
+              </p>
+              <a className="card-link" href="/order">Order a delivery →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Main() {
   return (
     <main id="main">
@@ -19,34 +86,6 @@ export default function Main() {
             <div className="hero-media" style={{width: '220px'}}>
               <div className="placeholder placeholder--thumb" aria-hidden="true"></div>
             </div>
-          </div>
-        </section>
-
-        {/* Specials */}
-        <section aria-labelledby="specials-heading">
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-            <h2 id="specials-heading">Specials</h2>
-            <button aria-label="Online Menu">Online Menu</button>
-          </div>
-
-          <div className="specials-grid" style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem'}}>
-            <article className="card">
-              <div className="placeholder" style={{height: '120px'}} aria-hidden="true"></div>
-              <h3>Greek Salad <small>$12.99</small></h3>
-              <p className="placeholder--short">Crisp lettuce, tomatoes, cucumbers, feta cheese and olives.</p>
-            </article>
-
-            <article className="card">
-              <div className="placeholder" style={{height: '120px'}} aria-hidden="true"></div>
-              <h3>Bruschetta <small>$8.99</small></h3>
-              <p className="placeholder--short">Grilled bread garlic, tomatoes, olive oil and basil.</p>
-            </article>
-
-            <article className="card">
-              <div className="placeholder" style={{height: '120px'}} aria-hidden="true"></div>
-              <h3>Lemon Dessert <small>$6.00</small></h3>
-              <p className="placeholder--short">A tangy sweet finish to your meal.</p>
-            </article>
           </div>
         </section>
 
