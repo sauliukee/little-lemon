@@ -11,6 +11,14 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 
+/* ----------- Form ----------- */
+.form { display: grid; gap: 1rem; max-width: 420px; }
+.field { display: grid; gap: .35rem; }
+.field input, .field select { padding: .6rem .7rem; border: 1px solid #dcdcdc; border-radius: 10px; }
+.field input:focus, .field select:focus { outline: 2px solid var(--clr-primary, #F4CE14); outline-offset: 2px; }
+.error { color: #c0392b; font-size: .9rem; }
+
+
 /* ----------- Theme tokens ----------- */
 :root{
   /* Palette (course-like) */
@@ -71,6 +79,12 @@ h2 { color: #EDEFEE; }
 
 /* ================== HEADER & NAV ================== */
 /* ===== HEADER & NAV ===== */
+nav a.active { 
+  border-bottom: 3px solid var(--clr-primary, #F4CE14);
+}
+nav a { text-decoration: none; }
+
+
 .site-header{
   background:#fff;
   border-bottom:1px solid #eee;
@@ -578,3 +592,13 @@ img{ border-radius: var(--radius); }
   p.lead{ font-size: 1rem; }
 }
 /* ================== END ================== */
+.section-head {
+  flex-wrap: wrap;
+}
+.section-head .btn {
+  min-width: 160px;
+  text-align: center;
+}
+
+/* success card vibe for confirmation */
+.section .round { background: #fff; }
